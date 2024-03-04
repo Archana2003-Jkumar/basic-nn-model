@@ -5,13 +5,11 @@
 To develop a neural network regression model for the given dataset.
 
 ## THEORY
-
-Explain the problem statement
-
-## Neural Network Model
-
-Include the neural network model diagram.
-
+A neural network regression model is a type of deep learning model used for predicting continuous numerical values.It refers to neural networks with multiple hidden layers. These deeper architectures enable the network to learn complex patterns and relationships in the data.
+### Architecture
+This model comprises of a single input and output layer along with two hidden layers of 3 and 5 relu activation layer. So that it predicts the corresponding output for the given set of input. 
+### Model
+![Exp1](https://github.com/Archana2003-Jkumar/basic-nn-model/assets/93427594/4d4c9943-43d8-4c5d-b3db-6d2100391251)
 ## DESIGN STEPS
 
 ### STEP 1:
@@ -43,17 +41,72 @@ Plot the performance plot
 Evaluate the model with the testing data.
 
 ## PROGRAM
-### Name:
-### Register Number:
+### Name:J.Archana Priya
+### Register Number:212221230007
 ```python
 
-Include your code here
+from google.colab import auth
+import gspread
+from google.auth import default
+import pandas as pd
 
 
+
+auth.authenticate_user()
+creds, _ = default()
+gc = gspread.authorize(creds)
+
+worksheet = gc.open('Exp 1 DL').sheet1
+
+data = worksheet.get_all_values()
+
+dataset1 = pd.DataFrame(data[1:], columns=data[0])
+dataset1 = dataset1.astype({'INPUT':'float'})
+
+
+dataset1 = dataset1.astype({'OUTPUT':'float'})
+dataset1.head()
+
+import pandas
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+
+X = dataset1[['INPUT']].values
+y = dataset1[['OUTPUT']].values
+
+X
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.33,random_state = 33)
+scaler = MinMaxScaler()
+scaler.fit(X_train)
+
+X_train1 = scaler.transform(X_train)
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+model = Sequential([ Dense(units=5,activation='relu',input_shape=[1]),
+                  Dense(units=3,activation='relu'),
+                  Dense(units=1)])
+
+model.compile(optimizer='rmsprop',loss='mse')
+model.fit(X_train1,y_train,epochs=3300)
+
+lossdf = pd.DataFrame(model.history.history)
+lossdf.plot()
+
+X_test1 = scaler.transform(X_test)
+
+model.evaluate(X_test1,y_test)
+
+X_n1 = [[10]]    
+
+X_n1_1 = scaler.transform(X_n1)
+
+model.predict(X_n1_1)
 ```
 ## Dataset Information
-
-Include screenshot of the dataset
+![image](https://github.com/Archana2003-Jkumar/basic-nn-model/assets/93427594/fb1ddbbe-b614-48cb-81e4-bf18ef81d524)
 
 ## OUTPUT
 
@@ -70,5 +123,4 @@ Find the test data root mean squared error
 Include your sample input and output here
 
 ## RESULT
-
-Include your result here
+Thus the neural network regression model for the given dataset has been successfully developed.
