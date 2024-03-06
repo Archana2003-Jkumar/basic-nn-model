@@ -115,8 +115,7 @@ model.predict(X_n1_1)
 
 
 ### Test Data Root Mean Squared Error
-
-
+![image](https://github.com/Archana2003-Jkumar/basic-nn-model/assets/93427594/90a04236-07d2-4019-9ddf-fff03e94bef5)
 
 ### New Sample Data Prediction
 ![image](https://github.com/Archana2003-Jkumar/basic-nn-model/assets/93427594/2b7cf193-7cee-450f-b9b2-ba38aa26f475)
