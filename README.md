@@ -111,16 +111,16 @@ model.predict(X_n1_1)
 ## OUTPUT
 
 ### Training Loss Vs Iteration Plot
+![image](https://github.com/Archana2003-Jkumar/basic-nn-model/assets/93427594/d0070257-9dcf-468f-ae31-d8d7377232fa)
 
-Include your plot here
 
 ### Test Data Root Mean Squared Error
 
-Find the test data root mean squared error
+
 
 ### New Sample Data Prediction
+![image](https://github.com/Archana2003-Jkumar/basic-nn-model/assets/93427594/2b7cf193-7cee-450f-b9b2-ba38aa26f475)
 
-Include your sample input and output here
 
 ## RESULT
 Thus the neural network regression model for the given dataset has been successfully developed.
